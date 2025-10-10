@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Chat GUI</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="sidebar">
+        <h3>Clients</h3>
+        <div id="clients" class="clients">loading...</div>
+        <hr />
+        <div>
+            <label>Your name<br /><input id="name" placeholder="Your name" /></label>
+            <button id="setName">Set</button>
+        </div>
+        <p style="margin-top:12px"><small>Open multiple CLI/browser clients to test.</small></p>
+    </div>
+
+    <div class="main">
+        <header>
+            <strong>Realtime Chat (GUI)</strong>
+            <span id="status" style="margin-left:12px; color:#666">disconnected</span>
+        </header>
+        <div id="messages" class="messages"></div>
+        <div class="compose">
+            <input id="input" placeholder="Type a message and press Enter" />
+            <button id="sendBtn">Send</button>
+        </div>
+    </div>
+
+    <!-- Load socket.io client from server -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="client.gui.js"></script>
+</body>
+
+</html>

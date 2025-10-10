@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreelanceHub - Professional Services Marketplace</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <nav class="container">
+            <div class="nav-brand">
+                <h2>FreelanceHub</h2>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#gigs" class="nav-link">Browse Gigs</a>
+                <a href="#become-seller" class="nav-link">Become a Seller</a>
+            </div>
+            <div class="nav-actions">
+                <button class="btn btn--outline nav-btn" id="loginBtn">Sign In</button>
+                <button class="btn btn--primary nav-btn" id="registerBtn">Join</button>
+                <div class="user-menu hidden" id="userMenu">
+                    <img src="" alt="Avatar" class="user-avatar" id="userAvatar">
+                    <div class="dropdown" id="userDropdown">
+                        <button class="dropdown-item" id="dashboardBtn">Dashboard</button>
+                        <button class="dropdown-item" id="profileBtn">Profile</button>
+                        <button class="dropdown-item" id="logoutBtn">Logout</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main id="mainContent">
+        <!-- Landing Page -->
+        <section class="page active" id="homePage">
+            <!-- Hero Section -->
+            <div class="hero">
+                <div class="container">
+                    <div class="hero-content">
+                        <h1>Find the perfect <span class="text-primary">freelance</span> services for your business</h1>
+                        <p>Work with talented freelancers from around the world</p>
+                        <div class="search-bar">
+                            <input type="text" placeholder="Try 'build mobile app'" id="heroSearch" class="form-control">
+                            <button class="btn btn--primary search-btn" id="heroSearchBtn">
+                                <span>🔍</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Categories Section -->
+            <section class="categories-section">
+                <div class="container">
+                    <h2>Popular professional services</h2>
+                    <div class="categories-grid" id="categoriesGrid">
+                        <!-- Categories will be populated by JavaScript -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Featured Gigs -->
+            <section class="featured-section">
+                <div class="container">
+                    <h2>Featured Services</h2>
+                    <div class="gigs-grid" id="featuredGigs">
+                        <!-- Featured gigs will be populated by JavaScript -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Sections -->
+            <section class="cta-section">
+                <div class="container">
+                    <div class="cta-grid">
+                        <div class="cta-card">
+                            <h3>Find the perfect freelancer</h3>
+                            <p>Browse services from top-rated freelancers</p>
+                            <button class="btn btn--primary" id="browseGigsBtn">Browse Gigs</button>
+                        </div>
+                        <div class="cta-card">
+                            <h3>Earn money your way</h3>
+                            <p>Work on your own terms and showcase your skills</p>
+                            <button class="btn btn--outline" id="startSellingBtn">Start Selling</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!-- Auth Pages -->
+        <section class="page" id="authPage">
+            <div class="auth-container">
+                <div class="auth-form" id="loginForm">
+                    <h2>Sign In to FreelanceHub</h2>
+                    <form id="loginFormElement">
+                        <div class="form-group">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" id="loginEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Password</label>
+                            <input type="password" class="form-control" id="loginPassword" required>
+                        </div>
+                        <button type="submit" class="btn btn--primary btn--full-width">Sign In</button>
+                        <p class="auth-switch">Don't have an account? <a href="#" id="showRegisterForm">Join now</a></p>
+                    </form>
+                </div>
+
+                <div class="auth-form hidden" id="registerForm">
+                    <h2>Join FreelanceHub</h2>
+                    <form id="registerFormElement">
+                        <div class="form-group">
+                            <label class="form-label">Full Name</label>
+                            <input type="text" class="form-control" id="registerName" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" id="registerEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Password</label>
+                            <input type="password" class="form-control" id="registerPassword" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Join as</label>
+                            <select class="form-control" id="registerRole" required>
+                                <option value="">Select role</option>
+                                <option value="client">I'm a client, hiring for a project</option>
+                                <option value="freelancer">I'm a freelancer, looking for work</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn--primary btn--full-width">Create Account</button>
+                        <p class="auth-switch">Already have an account? <a href="#" id="showLoginForm">Sign in</a></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gig Listing Page -->
+        <section class="page" id="gigsPage">
+            <div class="container">
+                <div class="gigs-header">
+                    <h2>Browse Services</h2>
+                    <div class="gigs-filters">
+                        <select class="form-control" id="categoryFilter">
+                            <option value="">All Categories</option>
+                        </select>
+                        <select class="form-control" id="priceFilter">
+                            <option value="">Any Price</option>
+                            <option value="0-100">Under $100</option>
+                            <option value="100-500">$100 - $500</option>
+                            <option value="500+">$500+</option>
+                        </select>
+                        <input type="text" class="form-control" id="gigSearch" placeholder="Search gigs...">
+                    </div>
+                </div>
+                <div class="gigs-grid" id="allGigs">
+                    <!-- Gigs will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Gig Detail Page -->
+        <section class="page" id="gigDetailPage">
+            <div class="container">
+                <div class="gig-detail" id="gigDetailContent">
+                    <!-- Gig details will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Pages -->
+        <section class="page" id="dashboardPage">
+            <div class="dashboard-layout">
+                <aside class="dashboard-sidebar">
+                    <div class="sidebar-header">
+                        <h3 id="dashboardTitle">Dashboard</h3>
+                    </div>
+                    <nav class="sidebar-nav" id="sidebarNav">
+                        <!-- Navigation items will be populated by JavaScript based on user role -->
+                    </nav>
+                </aside>
+                <main class="dashboard-content">
+                    <div id="dashboardContent">
+                        <!-- Dashboard content will be populated by JavaScript -->
+                    </div>
+                </main>
+            </div>
+        </section>
+
+        <!-- Profile Page -->
+        <section class="page" id="profilePage">
+            <div class="container">
+                <div class="profile-content" id="profileContent">
+                    <!-- Profile content will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Chat Interface -->
+        <div class="chat-widget hidden" id="chatWidget">
+            <div class="chat-header">
+                <h4>Messages</h4>
+                <button class="chat-close" id="chatClose">×</button>
+            </div>
+            <div class="chat-body" id="chatBody">
+                <div class="chat-messages" id="chatMessages">
+                    <!-- Messages will be populated by JavaScript -->
+                </div>
+                <div class="chat-input-area">
+                    <input type="text" class="form-control" id="chatInput" placeholder="Type a message...">
+                    <button class="btn btn--primary" id="sendMessage">Send</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modals -->
+    <div class="modal hidden" id="createGigModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Create New Gig</h3>
+                <button class="modal-close" id="closeCreateGigModal">×</button>
+            </div>
+            <div class="modal-body">
+                <form id="createGigForm">
+                    <div class="form-group">
+                        <label class="form-label">Gig Title</label>
+                        <input type="text" class="form-control" id="gigTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Description</label>
+                        <textarea class="form-control" id="gigDescription" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Category</label>
+                        <select class="form-control" id="gigCategory" required>
+                            <option value="">Select category</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Price ($)</label>
+                        <input type="number" class="form-control" id="gigPrice" min="5" required>
+                    </div>
+                    <div class="modal-actions">
+                        <button type="button" class="btn btn--outline" id="cancelCreateGig">Cancel</button>
+                        <button type="submit" class="btn btn--primary">Create Gig</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading States -->
+    <div class="loading hidden" id="loading">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toastContainer">
+        <!-- Toasts will be populated by JavaScript -->
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
