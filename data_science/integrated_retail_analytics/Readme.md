@@ -3,7 +3,6 @@
 ![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
 ![scikit-learn](https://img.shields.io/badge/scikit--learn-1.0+-orange.svg)
 ![Pandas](https://img.shields.io/badge/Pandas-1.3+-green.svg)
-![License](https://img.shields.io/badge/License-MIT-yellow.svg)
 
 > **Predictive analytics system to forecast weekly retail sales and optimize store operations using Machine Learning**
 
@@ -26,7 +25,6 @@
 - [Business Impact](#business-impact)
 - [Future Improvements](#future-improvements)
 - [Contributing](#contributing)
-- [License](#license)
 - [Contact](#contact)
 
 ---
@@ -184,14 +182,10 @@ Three interconnected datasets covering February 2010 - October 2012:
 
 ## 🚀 Installation
 
-### Prerequisites
-- Python 3.8+
-- pip or conda
-
 ### Clone Repository
 ```bash
-git clone https://github.com/yourusername/retail-analytics-store-optimization.git
-cd retail-analytics-store-optimization
+git clone https://github.com/vikramsumit/internship/tree/main/data_science/integrated_retail_analytics
+cd integrated_retail_analytics
 ```
 
 ### Install Dependencies
@@ -359,59 +353,15 @@ For a store with $50M annual sales:
 
 ---
 
-## 🔮 Future Improvements
-
-### Short-term Enhancements
-- [ ] Add more recent data (2023-2025)
-- [ ] Implement real-time prediction API
-- [ ] Create interactive dashboard (Streamlit/Dash)
-- [ ] Add confidence intervals to predictions
-
-### Advanced Features
-- [ ] Deep Learning models (LSTM for time series)
-- [ ] Customer segmentation analysis
-- [ ] Price optimization algorithms
-- [ ] Competitor analysis integration
-
-### Technical Upgrades
-- [ ] Automated retraining pipeline (MLOps)
-- [ ] A/B testing framework
-- [ ] Docker containerization
-- [ ] Cloud deployment (AWS/Azure/GCP)
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-### Steps to Contribute
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-### Code Style
-- Follow PEP 8 guidelines
-- Add docstrings to functions
-- Include comments for complex logic
-- Write unit tests for new features
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
 ## 📧 Contact
 
 **Your Name**
-- 📧 Email: your.email@example.com
+- 📧 Email: vikramsumit@outlook.com / sumitvikram22182018@gmail.com
 - 💼 LinkedIn: [linkedin.com/in/yourprofile](https://linkedin.com/in/yourprofile)
-- 🐱 GitHub: [@yourusername](https://github.com/yourusername)
+- 🐱 GitHub: [@yourusername](https://github.com/vikramsumit)
 - 📝 Portfolio: [yourportfolio.com](https://yourportfolio.com)
 
 ---
