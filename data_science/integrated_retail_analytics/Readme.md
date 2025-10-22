@@ -361,7 +361,7 @@ For a store with $50M annual sales:
 **Your Name**
 - 📧 Email: vikramsumit@outlook.com / sumitvikram22182018@gmail.com
 - 💼 LinkedIn: [linkedin.com/in/yourprofile](https://linkedin.com/in/yourprofile)
-- 🐱 GitHub: [@yourusername](https://github.com/vikramsumit)
+- 🐱 GitHub: [@vikramsumit](https://github.com/vikramsumit)
 - 📝 Portfolio: [yourportfolio.com](https://yourportfolio.com)
 
 ---
