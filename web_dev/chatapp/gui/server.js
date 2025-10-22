@@ -81,7 +81,7 @@ function emitClientList() {
   io.emit('server:clients', list);
 }
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3005;
 server.listen(PORT, HOST, () => {
   console.log(`Server listening on http://${HOST}:${PORT}`);
 });
