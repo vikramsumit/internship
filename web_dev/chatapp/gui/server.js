@@ -9,7 +9,7 @@ const path = require('path');
 const app = express();
 const server = http.createServer(app);
 
-const HOST = '0.0.0.0';
+const HOST = process.env.HOST || '0.0.0.0';
 const io = new Server(server);
 
 // Serve static GUI files from ./public
@@ -26,26 +26,31 @@ io.on('connection', (socket) => {
 
   // Expect initial handshake event from client with { type: 'cli'|'gui', name: '...' }
   socket.on('handshake', (meta = {}) => {
-    const { type = 'unknown', name = 'Anonymous' } = meta;
+    const previousMeta = clients.get(socket.id);
+    const type = sanitizeText(meta.type) || 'unknown';
+    const name = sanitizeText(meta.name) || 'Anonymous';
     clients.set(socket.id, { type, name });
     console.log(`Handshake from ${socket.id}: type=${type}, name=${name}`);
 
-    // Notify others
-    socket.broadcast.emit('server:notice', {
-      text: `${name} (${type}) joined.`,
-      time: Date.now()
-    });
+    if (!previousMeta) {
+      socket.broadcast.emit('server:notice', {
+        text: `${name} (${type}) joined.`,
+        time: Date.now()
+      });
+    }
 
     // Send current clients list to everyone
     emitClientList();
   });
 
-  socket.on('message', (payload) => {
-    // payload: { text, from }
+  socket.on('message', (payload = {}) => {
+    const text = sanitizeText(payload.text).slice(0, 500);
+    if (!text) return;
+
     const fromMeta = clients.get(socket.id) || {};
     const msg = {
-      text: payload.text,
-      from: payload.from || fromMeta.name || 'Unknown',
+      text,
+      from: fromMeta.name || sanitizeText(payload.from) || 'Unknown',
       type: fromMeta.type || 'unknown',
       ts: Date.now(),
       socketId: socket.id
@@ -79,6 +84,10 @@ io.on('connection', (socket) => {
 function emitClientList() {
   const list = Array.from(clients.values());
   io.emit('server:clients', list);
+}
+
+function sanitizeText(value) {
+  return typeof value === 'string' ? value.trim() : '';
 }
 
 const PORT = process.env.PORT || 3005;

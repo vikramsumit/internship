@@ -1,38 +1,62 @@
 <!doctype html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8" />
-    <title>Chat GUI</title>
+    <title>Realtime Chat</title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-    <div class="sidebar">
-        <h3>Clients</h3>
-        <div id="clients" class="clients">loading...</div>
-        <hr />
-        <div>
-            <label>Your name<br /><input id="name" placeholder="Your name" /></label>
-            <button id="setName">Set</button>
-        </div>
-        <p style="margin-top:12px"><small>Open multiple CLI/browser clients to test.</small></p>
+    <div class="app-shell">
+        <aside id="sidebar" class="sidebar" aria-label="Connected clients">
+            <div class="sidebar-header">
+                <div>
+                    <p class="eyebrow">Room</p>
+                    <h2>People</h2>
+                </div>
+                <span id="clientCount" class="count-badge">0</span>
+            </div>
+
+            <ul id="clients" class="clients" aria-live="polite"></ul>
+
+            <form id="nameForm" class="profile-editor">
+                <label for="name">Your name</label>
+                <div class="profile-row">
+                    <input id="name" maxlength="32" placeholder="Your name" autocomplete="nickname" />
+                    <button id="setName" type="submit">Save</button>
+                </div>
+            </form>
+        </aside>
+
+        <main class="main">
+            <header class="topbar">
+                <button id="toggleClients" class="ghost-button mobile-only" type="button" aria-controls="sidebar" aria-expanded="false">
+                    People
+                </button>
+                <div>
+                    <p class="eyebrow">Realtime Chat</p>
+                    <h1>Conversation</h1>
+                </div>
+                <div id="status" class="status-pill" data-state="connecting">Connecting</div>
+            </header>
+
+            <section id="messages" class="messages" aria-live="polite" aria-label="Messages">
+                <div id="emptyState" class="empty-state">
+                    <img src="chat-empty.png" alt="" />
+                    <p>No messages yet</p>
+                </div>
+            </section>
+
+            <form id="composeForm" class="compose">
+                <label class="sr-only" for="input">Message</label>
+                <textarea id="input" rows="1" maxlength="500" placeholder="Write a message" disabled></textarea>
+                <button id="sendBtn" type="submit" disabled>Send</button>
+            </form>
+        </main>
     </div>
 
-    <div class="main">
-        <header>
-            <strong>Realtime Chat (GUI)</strong>
-            <span id="status" style="margin-left:12px; color:#666">disconnected</span>
-        </header>
-        <div id="messages" class="messages"></div>
-        <div class="compose">
-            <input id="input" placeholder="Type a message and press Enter" />
-            <button id="sendBtn">Send</button>
-        </div>
-    </div>
-
-    <!-- Load socket.io client from server -->
     <script src="/socket.io/socket.io.js"></script>
     <script src="client.gui.js"></script>
 </body>

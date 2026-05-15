@@ -4,7 +4,7 @@ const { io } = require('socket.io-client');
 const readline = require('readline');
 
 const name = process.argv[2] || `cli-${Math.floor(Math.random()*1000)}`;
-const serverUrl = process.argv[3] || 'http://localhost:3000';
+const serverUrl = process.argv[3] || process.env.CHAT_SERVER_URL || 'http://localhost:3008';
 
 const socket = io(serverUrl, { transports: ['websocket'] });
 
@@ -16,6 +16,7 @@ const rl = readline.createInterface({
 
 socket.on('connect', () => {
   console.log(`Connected to ${serverUrl} as ${name} (socket ${socket.id})`);
+  console.log('Open another terminal and run this client with a different name to chat together.');
   socket.emit('handshake', { type: 'cli', name });
 
   rl.prompt();
